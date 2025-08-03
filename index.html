@@ -1,66 +1,240 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <title>Kaizen Empire</title>
-    <link rel="stylesheet" href="style.css" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>King Trading Co. - 3D Animated</title>
+<style>
+  body, html {
+    margin: 0; padding: 0; height: 100%;
+    background: #0a0a0a;
+    color: #f5d76e;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    overflow-x: hidden;
+  }
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    height: 60px;
+    background: #111;
+    border-bottom: 2px solid #f5d76e;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+  }
+  nav a {
+    margin: 0 1.5rem;
+    color: #f5d76e;
+    font-weight: 600;
+    text-decoration: none;
+    font-size: 1.1rem;
+    transition: color 0.3s ease;
+  }
+  nav a:hover {
+    color: #fff;
+  }
+  header {
+    padding: 100px 20px 60px;
+    text-align: center;
+    border-bottom: 2px solid #f5d76e;
+  }
+  header h1 {
+    font-size: 3rem;
+    margin: 0;
+    letter-spacing: 0.1em;
+  }
+  header p {
+    font-size: 1.3rem;
+    margin-top: 0.5rem;
+    color: #c8b14c;
+  }
+  main {
+    max-width: 1000px;
+    margin: 3rem auto 5rem;
+    padding: 0 20px;
+  }
+  section {
+    margin-bottom: 4rem;
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  section.visible {
+    opacity: 1;
+    transform: translateY(0);
+    transition: all 0.8s ease-out;
+  }
+  h2 {
+    border-bottom: 2px solid #f5d76e;
+    padding-bottom: 0.4rem;
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+    font-size: 2rem;
+  }
+  ul {
+    padding-left: 1.5rem;
+    color: #e0cd7e;
+    font-size: 1.1rem;
+  }
+  ul li {
+    margin-bottom: 0.6rem;
+  }
+  #three-container {
+    width: 100%;
+    height: 400px;
+    margin: 2rem 0;
+  }
+  footer {
+    text-align: center;
+    padding: 1.5rem;
+    border-top: 1px solid #333;
+    color: #888;
+    font-size: 0.9rem;
+  }
+</style>
 </head>
 <body>
-    <header>
-        <h1>Kaizen Empire</h1>
-        <p class="tagline">Growing consistently with small steps together</p>
-    </header>
 
-    <main id="mountain-container">
-        <section class="section">📈 <strong>Kaizen</strong>: Meaning consistent growth</section>
-        <section class="section">🧠 <strong>Vision</strong>: Help people unleash their potential and grow financially by improving habits</section>
-        <section class="section">👁️ <strong>Goal</strong>: Create 50 MLM Core Organizations by 2030</section>
-        <section class="section">🕰️ <strong>Founded</strong>: 2022 by Kirubel Tadesse</section>
-        <section class="section">
-            <h2>🚀 Offerings</h2>
-            <ul>
-                <li>Mentorship (business & personal development)</li>
-                <li>Online income opportunities</li>
-                <li>Events for recruitment & knowledge</li>
-                <li>High-skill, high-ambition community</li>
-            </ul>
-        </section>
-        <section class="section">
-            <h2>📋 Operations</h2>
-            <ul>
-                <li>Daily Telegram orientations</li>
-                <li>Weekly new business orientations</li>
-                <li>Weekly recognition & training classes</li>
-            </ul>
-        </section>
-        <section class="section">
-            <h2>🎤 Testimonial</h2>
-            <p>"I was stuck in employee life... until Kaizen unlocked my true potential. I built a team, grew my income, and finally stepped into freedom."</p>
-            <iframe width="300" height="180" src="https://www.youtube.com/embed/sn67HhCmXHk?si=En_Ailrp3yYm6vHh" title="Kaizen Testimonial" allowfullscreen></iframe>
-        </section>
-        <section class="section">
-            <h2>📲 Join Us</h2>
-            <form>
-                <input type="text" placeholder="Full Name" required /><br />
-                <input type="text" placeholder="Phone" required /><br />
-                <input type="text" placeholder="Telegram Username" required /><br />
-                <button type="submit">Submit</button>
-            </form>
-            <a class="telegram-button" href="https://t.me/KaizenEmpireBot" target="_blank">Message us on Telegram</a>
-        </section>
-        <section class="section">
-            <h2>📍 Contact</h2>
-            <p>📞 Phone: 0980114265</p>
-            <p>📍 Megenagna, Lion International Building</p>
-        </section>
-    </main>
+<nav>
+  <a href="#about">About</a>
+  <a href="#products">Products</a>
+  <a href="#locations">Locations</a>
+  <a href="#contact">Contact</a>
+</nav>
 
-    <footer>
-        <p>&copy; 2025 Kaizen Empire. All rights reserved.</p>
-        <button id="toggle-theme">🌓 Toggle Light/Dark</button>
-    </footer>
+<header>
+  <h1>King Trading Co.</h1>
+  <p>Global Energy & Commodities Trading Solutions</p>
+</header>
 
-    <script src="script.js"></script>
+<!-- 3D Animated Object Container -->
+<div id="three-container"></div>
+
+<main>
+  <section id="about">
+    <h2>About King Trading</h2>
+    <p>King Trading Co. is a global leader in energy and commodity trading, specializing in oil, marine fuels, LPG, metals, and more. With operations spanning across major international hubs, we provide seamless logistics, high-quality products, and trusted partnerships worldwide.</p>
+  </section>
+
+  <section id="products">
+    <h2>Our Trading Portfolio</h2>
+    <ul>
+      <li><strong>Crude Oil:</strong> Seamless global crude logistics with flexible supply solutions serving refiners worldwide.</li>
+      <li><strong>Marine Fuels:</strong> Premium marine bunker fuels from our strategically located port terminals.</li>
+      <li><strong>LPG & Gas:</strong> Supplying pressurized LPG and natural gas to emerging markets across Asia and Africa.</li>
+      <li><strong>Metals & Minerals:</strong> Global trading in aluminum, copper, nickel, and industrial ferroalloys.</li>
+      <li><strong>Distillates & Naphtha:</strong> Reliable distribution networks supporting fuel and petrochemical industries.</li>
+      <li><strong>Dry Bulk Cargo:</strong> Comprehensive dry bulk trade including coal, bauxite, and pet coke.</li>
+    </ul>
+  </section>
+
+  <section id="locations">
+    <h2>Global Operations</h2>
+    <ul>
+      <li>Fujairah, UAE – Energy & Marine Fuels</li>
+      <li>Rotterdam, Netherlands – European Commodities</li>
+      <li>Singapore – Asian Market Hub</li>
+      <li>Houston, USA – Crude & Gas Logistics</li>
+      <li>Istanbul, Turkey – Gas & Power Trading</li>
+    </ul>
+  </section>
+
+  <section id="contact">
+    <h2>Contact Us</h2>
+    <p>Get in touch for trading inquiries, partnership opportunities, or to learn more about our offerings.</p>
+    <p>Email: <a href="mailto:contact@kingtradingco.com">contact@kingtradingco.com</a></p>
+    <p>Phone: +1 555 123 4567</p>
+    <p>Address: 123 Global Trade Avenue, New York, NY</p>
+  </section>
+</main>
+
+<footer>
+  &copy; 2025 King Trading Co. All rights reserved.
+</footer>
+
+<!-- THREE.js -->
+<script src="https://cdn.jsdelivr.net/npm/three@0.152.2/build/three.min.js"></script>
+<!-- GSAP -->
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.3/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.3/dist/ScrollTrigger.min.js"></script>
+
+<script>
+  // Basic Three.js rotating cube setup
+  const container = document.getElementById('three-container');
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(45, container.clientWidth / container.clientHeight, 0.1, 1000);
+  const renderer = new THREE.WebGLRenderer({antialias: true, alpha: true});
+  renderer.setSize(container.clientWidth, container.clientHeight);
+  container.appendChild(renderer.domElement);
+
+  // Cube geometry as placeholder for mountain
+  const geometry = new THREE.BoxGeometry(2, 2, 2);
+  const material = new THREE.MeshStandardMaterial({
+    color: 0xf5d76e,
+    metalness: 0.8,
+    roughness: 0.3,
+    emissive: 0x332b0a,
+    emissiveIntensity: 0.6,
+  });
+  const cube = new THREE.Mesh(geometry, material);
+  scene.add(cube);
+
+  // Lights
+  const ambientLight = new THREE.AmbientLight(0x888888);
+  scene.add(ambientLight);
+  const pointLight = new THREE.PointLight(0xf5d76e, 1);
+  pointLight.position.set(5,5,5);
+  scene.add(pointLight);
+
+  camera.position.z = 5;
+
+  // Resize handler
+  window.addEventListener('resize', () => {
+    const width = container.clientWidth;
+    const height = container.clientHeight;
+    renderer.setSize(width, height);
+    camera.aspect = width / height;
+    camera.updateProjectionMatrix();
+  });
+
+  // Animation loop
+  function animate() {
+    requestAnimationFrame(animate);
+    cube.rotation.y += 0.005;
+    cube.rotation.x += 0.003;
+    renderer.render(scene, camera);
+  }
+  animate();
+
+  // GSAP ScrollTrigger for fade-in sections
+  gsap.registerPlugin(ScrollTrigger);
+
+  document.querySelectorAll('main section').forEach(section => {
+    gsap.fromTo(section, 
+      {opacity:0, y:30},
+      {
+        opacity:1,
+        y:0,
+        scrollTrigger: {
+          trigger: section,
+          start: "top 80%",
+          toggleActions: "play none none none"
+        },
+        duration: 1,
+        ease: "power3.out"
+      });
+  });
+
+  // Smooth scroll for nav links
+  document.querySelectorAll('nav a').forEach(anchor => {
+    anchor.addEventListener('click', function(e){
+      e.preventDefault();
+      document.querySelector(this.getAttribute('href')).scrollIntoView({
+        behavior: 'smooth'
+      });
+    });
+  });
+</script>
+
 </body>
 </html>
