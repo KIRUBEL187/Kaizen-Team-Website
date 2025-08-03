@@ -1,0 +1,64 @@
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: #000;
+  color: gold;
+  scroll-snap-type: x mandatory;
+  overflow-x: hidden;
+}
+
+.light-mode {
+  background: white;
+  color: black;
+}
+
+button#toggle-mode {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  z-index: 99;
+}
+
+.mountain-slide {
+  scroll-snap-align: start;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: all 1s ease-in-out;
+  padding: 2rem;
+}
+
+.mountain-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 200vw;
+  height: 100vh;
+  background: url('https://raw.githubusercontent.com/kirubel187/Kaizen-Website/main/assets/mountain.png') no-repeat center center;
+  background-size: cover;
+  transform: rotateY(0deg);
+  transition: transform 1s ease-in-out;
+  z-index: -1;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+input, button {
+  padding: 0.5rem;
+  font-size: 1rem;
+}
+
+.telegram-btn {
+  color: white;
+  background-color: #0088cc;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 5px;
+}
