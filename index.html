@@ -1,318 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>King Trading Co. | Trading</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>King Trading Co.</title>
 
-<style>
-  /* Reset & Base */
-  * {
-    box-sizing: border-box;
-  }
-  body {
-    margin: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #0a0a0a;
-    color: #f5d76e;
-    line-height: 1.6;
-    scroll-behavior: smooth;
-  }
-  a {
-    color: #f5d76e;
-    text-decoration: none;
-  }
-  a:hover {
-    text-decoration: underline;
-  }
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
-  /* Navigation */
-  .nav {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    background-color: #111;
-    border-bottom: 2px solid #f5d76e;
-    z-index: 1000;
-  }
-  .nav-container {
-    max-width: 1000px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: center;
-    padding: 1rem 0;
-  }
-  .nav-link {
-    margin: 0 1.5rem;
-    font-weight: 600;
-    font-size: 1.1rem;
-    transition: color 0.3s ease;
-  }
-  .nav-link:hover {
-    color: #fff;
-  }
+  <!-- Link CSS -->
+  <link rel="stylesheet" href="style.css">
 
-  /* Header */
-  .header {
-    padding: 6rem 1rem 3rem; /* leave room for fixed nav */
-    border-bottom: 2px solid #f5d76e;
-    text-align: center;
-    background-color: #111;
-    margin-top: 60px; /* nav height */
-  }
-  .header-content h1 {
-    margin: 0;
-    font-size: 3rem;
-    letter-spacing: 0.1em;
-    font-weight: 700;
-  }
-  .header-content p {
-    margin-top: 0.5rem;
-    font-size: 1.3rem;
-    font-weight: 600;
-    color: #c8b14c;
-  }
-
-  /* Main content */
-  .main-content {
-    max-width: 1000px;
-    margin: 3rem auto 5rem;
-    padding: 0 1rem;
-  }
-  .section {
-    margin-bottom: 4rem;
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-  }
-  .section.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  .section h2 {
-    font-size: 2rem;
-    border-bottom: 2px solid #f5d76e;
-    padding-bottom: 0.4rem;
-    margin-bottom: 1.5rem;
-    font-weight: 600;
-  }
-
-  /* Products grid */
-  .products-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1.8rem;
-  }
-  .product-card {
-    background-color: #1a1a1a;
-    padding: 1.8rem;
-    border-radius: 8px;
-    box-shadow: 0 0 12px #f5d76e55;
-    cursor: pointer;
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
-  }
-  .product-card:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 24px #f5d76eee;
-  }
-  .product-card h3 {
-    margin-top: 0;
-    margin-bottom: 0.9rem;
-    font-size: 1.3rem;
-  }
-  .product-card p {
-    font-size: 1rem;
-    color: #e0cd7e;
-  }
-
-  /* Locations list */
-  .locations-list {
-    padding-left: 1.5rem;
-    color: #e0cd7e;
-    font-size: 1.1rem;
-  }
-  .locations-list li {
-    margin-bottom: 0.6rem;
-  }
-
-  /* Contact */
-  .email-link {
-    font-weight: 600;
-    display: inline-block;
-    margin-top: 0.4rem;
-  }
-
-  /* Footer */
-  .footer {
-    text-align: center;
-    padding: 1.5rem;
-    border-top: 1px solid #333;
-    color: #888;
-    font-size: 0.9rem;
-  }
-
-  /* Responsive */
-  @media (max-width: 600px) {
-    .nav-container {
-      flex-wrap: wrap;
-      padding: 0.8rem 0;
-    }
-    .nav-link {
-      margin: 0.5rem 1rem;
-    }
-    .header-content h1 {
-      font-size: 2.2rem;
-    }
-    .main-content {
-      margin: 2rem auto 4rem;
-    }
-  }
-
-  /* Mountain container */
-  #mountain-container {
-    width: 100%;
-    height: 500px;
-    margin: 2rem 0;
-  }
-</style>
-
+  <!-- Three.js Library -->
+  <script src="https://cdn.jsdelivr.net/npm/three@0.152.2/build/three.min.js"></script>
 </head>
 <body>
 
-<nav class="nav">
-  <div class="nav-container">
-    <a href="#about" class="nav-link">About</a>
-    <a href="#products" class="nav-link">Products</a>
-    <a href="#locations" class="nav-link">Locations</a>
-    <a href="#contact" class="nav-link">Contact</a>
-  </div>
-</nav>
-
-<header class="header">
-  <div class="header-content">
-    <h1>King Trading Co.</h1>
-    <p>Global Energy & Commodities Trading Solutions</p>
-  </div>
-</header>
-
-<!-- 3D Mountain Rotation -->
-<div id="mountain-container"></div>
-
-<main class="main-content">
-
-  <section id="about" class="section">
-    <h2>About King Trading</h2>
-    <p>King Trading Co. is a global leader in energy and commodity trading, specializing in oil, marine fuels, LPG, metals, and more. With operations spanning across major international hubs, we provide seamless logistics, high-quality products, and trusted partnerships worldwide.</p>
-  </section>
-
-  <section id="products" class="section">
-    <h2>Our Trading Portfolio</h2>
-    <div class="products-grid">
-      <article class="product-card">
-        <h3>Crude Oil</h3>
-        <p>Seamless global crude logistics with flexible supply solutions serving refiners worldwide.</p>
-      </article>
-      <article class="product-card">
-        <h3>Marine Fuels</h3>
-        <p>Premium marine bunker fuels from our strategically located port terminals.</p>
-      </article>
-      <article class="product-card">
-        <h3>LPG & Gas</h3>
-        <p>Supplying pressurized LPG and natural gas to emerging markets across Asia and Africa.</p>
-      </article>
-      <article class="product-card">
-        <h3>Metals & Minerals</h3>
-        <p>Global trading in aluminum, copper, nickel, and industrial ferroalloys.</p>
-      </article>
-      <article class="product-card">
-        <h3>Distillates & Naphtha</h3>
-        <p>Reliable distribution networks supporting fuel and petrochemical industries.</p>
-      </article>
-      <article class="product-card">
-        <h3>Dry Bulk Cargo</h3>
-        <p>Comprehensive dry bulk trade including coal, bauxite, and pet coke.</p>
-      </article>
+  <nav class="nav">
+    <div class="nav-container">
+      <a href="#about" class="nav-link">About</a>
+      <a href="#products" class="nav-link">Products</a>
+      <a href="#locations" class="nav-link">Locations</a>
+      <a href="#contact" class="nav-link">Contact</a>
     </div>
-  </section>
+  </nav>
 
-  <section id="locations" class="section">
-    <h2>Global Operations</h2>
-    <p>Our key trading hubs are strategically placed to maximize efficiency and market reach:</p>
-    <ul class="locations-list">
-      <li>Fujairah, UAE – Energy & Marine Fuels</li>
-      <li>Rotterdam, Netherlands – European Commodities</li>
-      <li>Singapore – Asian Market Hub</li>
-      <li>Houston, USA – Crude & Gas Logistics</li>
-      <li>Istanbul, Turkey – Gas & Power Trading</li>
-    </ul>
-  </section>
+  <header class="header">
+    <div class="header-content">
+      <h1>King Trading Co.</h1>
+      <p>Global Energy & Commodities Trading Solutions</p>
+    </div>
+  </header>
 
-  <section id="contact" class="section">
-    <h2>Contact Us</h2>
-    <p>Get in touch for trading inquiries, partnership opportunities, or to learn more about our offerings.</p>
-    <p>Email: <a href="mailto:contact@kingtradingco.com" class="email-link">contact@kingtradingco.com</a></p>
-    <p>Phone: +1 555 123 4567</p>
-    <p>Address: 123 Global Trade Avenue, New York, NY</p>
-  </section>
+  <!-- 3D Mountain -->
+  <div id="mountain-container"></div>
 
-</main>
+  <main class="main-content">
 
-<footer class="footer">
-  &copy; 2025 King Trading Co. All rights reserved.
-</footer>
+    <section id="about" class="section">
+      <h2>About King Trading</h2>
+      <p>We are global leaders in energy and commodity trading: oil, marine fuels, LPG, metals and more. Trusted across continents with seamless logistics and reliable supply.</p>
+    </section>
 
-<!-- THREE.js library -->
-<script src="https://cdn.jsdelivr.net/npm/three@0.152.2/build/three.min.js"></script>
+    <section id="products" class="section">
+      <h2>Our Products</h2>
+      <div class="products-grid">
+        <div class="product-card"><h3>Crude Oil</h3><p>Flexible supply chains for global refiners.</p></div>
+        <div class="product-card"><h3>Marine Fuels</h3><p>Premium bunker fuels at major ports.</p></div>
+        <div class="product-card"><h3>LPG & Gas</h3><p>Emerging market distribution networks.</p></div>
+        <div class="product-card"><h3>Metals</h3><p>Copper, Nickel, Aluminum & Ferroalloys.</p></div>
+        <div class="product-card"><h3>Distillates</h3><p>Supporting fuel and petrochemical supply.</p></div>
+        <div class="product-card"><h3>Dry Bulk</h3><p>Global trade in coal, bauxite, and more.</p></div>
+      </div>
+    </section>
 
-<script>
-// THREE.js mountain rotation effect
+    <section id="locations" class="section">
+      <h2>Global Locations</h2>
+      <ul class="locations-list">
+        <li>Fujairah, UAE – Energy & Marine Fuels</li>
+        <li>Rotterdam, Netherlands – European Commodities</li>
+        <li>Singapore – Asian Market Hub</li>
+        <li>Houston, USA – Crude & Gas Logistics</li>
+        <li>Istanbul, Turkey – Gas & Power Trading</li>
+      </ul>
+    </section>
 
-(() => {
-  const container = document.getElementById('mountain-container');
+    <section id="contact" class="section">
+      <h2>Contact</h2>
+      <p>Email: <a href="mailto:contact@kingtradingco.com">contact@kingtradingco.com</a></p>
+      <p>Phone: +1 555 123 4567</p>
+      <p>Address: 123 Global Trade Avenue, New York, NY</p>
+    </section>
 
-  // Scene setup
-  const scene = new THREE.Scene();
-  scene.background = new THREE.Color(0x0a0a0a);
+  </main>
 
-  // Camera setup
-  const camera = new THREE.PerspectiveCamera(
-    45,
-    container.clientWidth / container.clientHeight,
-    0.1,
-    1000
-  );
-  camera.position.set(0, 1.5, 4);
+  <footer class="footer">
+    &copy; 2025 King Trading Co. All rights reserved.
+  </footer>
 
-  // Renderer setup
-  const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-  renderer.setSize(container.clientWidth, container.clientHeight);
-  container.appendChild(renderer.domElement);
-
-  // Lights
-  const ambientLight = new THREE.AmbientLight(0x666666);
-  scene.add(ambientLight);
-
-  const directionalLight = new THREE.DirectionalLight(0xf5d76e, 1);
-  directionalLight.position.set(5, 10, 7);
-  scene.add(directionalLight);
-
-  // Mountain geometry (custom pyramid shape)
-  const geometry = new THREE.ConeGeometry(1.2, 2, 5); // 5 sides pyramid cone
-  const material = new THREE.MeshStandardMaterial({
-    color: 0xf5d76e,
-    metalness: 0.7,
-    roughness: 0.3,
-    emissive: 0x332b0a,
-    emissiveIntensity: 0.4,
-  });
-
-  const mountain = new THREE.Mesh(geometry, material);
-  mountain.rotation.x = Math.PI / 20; // slight tilt
-  scene.add(mountain);
-
-  // Responsive resize
-  window.addEventListener('resize', () => {
-    const width = container.clientWidth;
-   
+  <script src="script.js"></script>
 </body>
 </html>
