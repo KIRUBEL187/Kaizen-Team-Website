@@ -1,20 +1,13 @@
 
-let currentSection = 0;
-const sections = document.querySelectorAll(".section");
-
-function showSection(index) {
-    sections.forEach((section, i) => {
-        section.style.transform = `translateX(${(i - index) * 100}vw)`;
+document.addEventListener('DOMContentLoaded', () => {
+  const elements = document.querySelectorAll('.fade-in');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        entry.target.classList.add('visible');
+      }
     });
-}
-
-document.body.addEventListener("wheel", (e) => {
-    if (e.deltaY > 0) currentSection++;
-    else currentSection--;
-    currentSection = Math.max(0, Math.min(sections.length - 1, currentSection));
-    showSection(currentSection);
-});
-
-document.getElementById("toggle-theme").addEventListener("click", () => {
-    document.body.classList.toggle("light-mode");
+  }, {threshold: 0.1});
+  
+  elements.forEach(el => observer.observe(el));
 });
