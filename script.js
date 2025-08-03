@@ -1,66 +1,54 @@
-
-// 3D Mountain Rotation
 (() => {
   const container = document.getElementById('mountain-container');
-
   const scene = new THREE.Scene();
-  scene.background = new THREE.Color(0x0a0a0a);
+  scene.background = new THREE.Color(0x16232e);
 
-  const camera = new THREE.PerspectiveCamera(45, container.clientWidth / container.clientHeight, 0.1, 1000);
-  camera.position.set(0, 1.5, 4);
+  const camera = new THREE.PerspectiveCamera(45, container.clientWidth/container.clientHeight, 0.1,1000);
+  camera.position.set(0,1.5,4);
 
-  const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+  const renderer = new THREE.WebGLRenderer({ antialias:true, alpha:true });
   renderer.setSize(container.clientWidth, container.clientHeight);
   container.appendChild(renderer.domElement);
 
-  const ambientLight = new THREE.AmbientLight(0x666666);
-  scene.add(ambientLight);
+  const ambient = new THREE.AmbientLight(0x777777);
+  scene.add(ambient);
+  const dir = new THREE.DirectionalLight(0xe7d067, 1);
+  dir.position.set(5,10,7); scene.add(dir);
 
-  const directionalLight = new THREE.DirectionalLight(0xf5d76e, 1);
-  directionalLight.position.set(5, 10, 7);
-  scene.add(directionalLight);
-
-  const geometry = new THREE.ConeGeometry(1.2, 2, 5);
-  const material = new THREE.MeshStandardMaterial({
-    color: 0xf5d76e,
-    metalness: 0.7,
-    roughness: 0.3,
-    emissive: 0x332b0a,
-    emissiveIntensity: 0.4,
+  const geom = new THREE.ConeGeometry(1.4,2.2,6);
+  const mat = new THREE.MeshStandardMaterial({
+    color: 0xe7d067, metalness:0.8, roughness:0.25,
+    emissive: 0x22302a, emissiveIntensity:0.5
   });
-
-  const mountain = new THREE.Mesh(geometry, material);
-  mountain.rotation.x = Math.PI / 20;
+  const mountain = new THREE.Mesh(geom, mat);
+  mountain.rotation.x = Math.PI/15;
   scene.add(mountain);
 
-  window.addEventListener('resize', () => {
-    const width = container.clientWidth;
-    const height = container.clientHeight;
-    renderer.setSize(width, height);
-    camera.aspect = width / height;
+  window.addEventListener('resize', ()=> {
+    const w=container.clientWidth, h=container.clientHeight;
+    renderer.setSize(w,h);
+    camera.aspect = w/h;
     camera.updateProjectionMatrix();
   });
 
-  function animate() {
+  function animate(){
     requestAnimationFrame(animate);
-    mountain.rotation.y += 0.005;
-    mountain.rotation.x = Math.sin(Date.now() * 0.001) * 0.05 + Math.PI / 20;
+    mountain.rotation.y += 0.004;
+    mountain.rotation.x = Math.sin(Date.now()*0.001)*0.04 + Math.PI/15;
     renderer.render(scene, camera);
   }
   animate();
 })();
 
-// Fade-in Animation on Scroll
 document.addEventListener('DOMContentLoaded', () => {
   const sections = document.querySelectorAll('.section');
   const observer = new IntersectionObserver((entries, obs) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        obs.unobserve(entry.target);
+    entries.forEach(e => {
+      if(e.isIntersecting){
+        e.target.classList.add('visible');
+        obs.unobserve(e.target);
       }
     });
-  }, { threshold: 0.1 });
-
-  sections.forEach(section => observer.observe(section));
+  }, { threshold:0.1 });
+  sections.forEach(s=>observer.observe(s));
 });
