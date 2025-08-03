@@ -1,0 +1,46 @@
+
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    transition: background-color 0.6s, color 0.6s;
+    background-color: #000;
+    color: gold;
+}
+header, footer {
+    text-align: center;
+    padding: 2rem;
+    background: #111;
+    border-bottom: 2px solid gold;
+}
+.tagline {
+    font-style: italic;
+    font-size: 1.2rem;
+}
+.section {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.6rem;
+    text-align: center;
+    transition: transform 0.7s ease;
+    padding: 2rem;
+}
+.telegram-button {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 10px 20px;
+    background: gold;
+    color: black;
+    text-decoration: none;
+    border-radius: 5px;
+}
+form input, form button {
+    padding: 10px;
+    margin: 5px 0;
+    width: 80%;
+}
+.light-mode {
+    background-color: #fff;
+    color: #000;
+}
