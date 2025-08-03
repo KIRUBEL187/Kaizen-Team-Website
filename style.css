@@ -1,46 +1,60 @@
 
-body {
-    margin: 0;
-    font-family: 'Segoe UI', sans-serif;
-    transition: background-color 0.6s, color 0.6s;
-    background-color: #000;
-    color: gold;
+/* Fade-in animation */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
-header, footer {
-    text-align: center;
-    padding: 2rem;
-    background: #111;
-    border-bottom: 2px solid gold;
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
-.tagline {
-    font-style: italic;
-    font-size: 1.2rem;
+
+/* Smooth scroll behavior */
+html {
+  scroll-behavior: smooth;
 }
-.section {
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 1.6rem;
-    text-align: center;
-    transition: transform 0.7s ease;
-    padding: 2rem;
+
+/* Hover scale effect on product cards */
+.product {
+  background: #1a1a1a;
+  padding: 1.5rem;
+  border-radius: 6px;
+  box-shadow: 0 0 10px #f5d76e44;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
 }
-.telegram-button {
-    display: inline-block;
-    margin-top: 1rem;
-    padding: 10px 20px;
-    background: gold;
-    color: black;
-    text-decoration: none;
-    border-radius: 5px;
+.product:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px #f5d76eaa;
 }
-form input, form button {
-    padding: 10px;
-    margin: 5px 0;
-    width: 80%;
+
+/* Add a fixed nav bar for smooth scrolling */
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: #111;
+  border-bottom: 2px solid #f5d76e;
+  display: flex;
+  justify-content: center;
+  padding: 1rem 0;
+  z-index: 999;
 }
-.light-mode {
-    background-color: #fff;
-    color: #000;
+nav a {
+  color: #f5d76e;
+  margin: 0 1.2rem;
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+nav a:hover {
+  color: #fff;
+}
+
+/* Add spacing top to main to avoid nav overlap */
+main {
+  padding-top: 70px;
 }
