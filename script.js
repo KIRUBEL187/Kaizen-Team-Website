@@ -1,46 +1,66 @@
 
-let currentIndex = 0;
-const sections = document.querySelectorAll('.mountain-slide');
-const seasonColors = ['#3CB371', '#FFD700', '#FF8C00', '#87CEEB']; // spring, summer, autumn, winter
-let seasonIndex = 0;
+// 3D Mountain Rotation
+(() => {
+  const container = document.getElementById('mountain-container');
 
-function updateSeason() {
-  seasonIndex = (seasonIndex + 1) % seasonColors.length;
-  document.body.style.background = seasonColors[seasonIndex];
-}
+  const scene = new THREE.Scene();
+  scene.background = new THREE.Color(0x0a0a0a);
 
-function scrollToSection(index) {
-  if (index >= 0 && index < sections.length) {
-    sections[index].scrollIntoView({ behavior: 'smooth' });
-    currentIndex = index;
-    updateSeason();
-    animateMountain(index);
+  const camera = new THREE.PerspectiveCamera(45, container.clientWidth / container.clientHeight, 0.1, 1000);
+  camera.position.set(0, 1.5, 4);
+
+  const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+  renderer.setSize(container.clientWidth, container.clientHeight);
+  container.appendChild(renderer.domElement);
+
+  const ambientLight = new THREE.AmbientLight(0x666666);
+  scene.add(ambientLight);
+
+  const directionalLight = new THREE.DirectionalLight(0xf5d76e, 1);
+  directionalLight.position.set(5, 10, 7);
+  scene.add(directionalLight);
+
+  const geometry = new THREE.ConeGeometry(1.2, 2, 5);
+  const material = new THREE.MeshStandardMaterial({
+    color: 0xf5d76e,
+    metalness: 0.7,
+    roughness: 0.3,
+    emissive: 0x332b0a,
+    emissiveIntensity: 0.4,
+  });
+
+  const mountain = new THREE.Mesh(geometry, material);
+  mountain.rotation.x = Math.PI / 20;
+  scene.add(mountain);
+
+  window.addEventListener('resize', () => {
+    const width = container.clientWidth;
+    const height = container.clientHeight;
+    renderer.setSize(width, height);
+    camera.aspect = width / height;
+    camera.updateProjectionMatrix();
+  });
+
+  function animate() {
+    requestAnimationFrame(animate);
+    mountain.rotation.y += 0.005;
+    mountain.rotation.x = Math.sin(Date.now() * 0.001) * 0.05 + Math.PI / 20;
+    renderer.render(scene, camera);
   }
-}
+  animate();
+})();
 
-function animateMountain(index) {
-  const mountain = document.querySelector('.mountain-background');
-  if (mountain) {
-    mountain.style.transform = `rotateY(${index * 90}deg)`;
-  }
-}
+// Fade-in Animation on Scroll
+document.addEventListener('DOMContentLoaded', () => {
+  const sections = document.querySelectorAll('.section');
+  const observer = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        obs.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
 
-document.addEventListener('keydown', (e) => {
-  if (e.key === 'ArrowRight') {
-    scrollToSection(currentIndex + 1);
-  } else if (e.key === 'ArrowLeft') {
-    scrollToSection(currentIndex - 1);
-  }
-});
-
-document.addEventListener('wheel', (e) => {
-  if (e.deltaY > 0) {
-    scrollToSection(currentIndex + 1);
-  } else if (e.deltaY < 0) {
-    scrollToSection(currentIndex - 1);
-  }
-});
-
-document.getElementById("toggle-mode").addEventListener("click", () => {
-  document.body.classList.toggle("light-mode");
+  sections.forEach(section => observer.observe(section));
 });
