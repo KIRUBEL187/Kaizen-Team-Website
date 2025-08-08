@@ -1,66 +1,257 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kaizen Empire</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Kaizen — Elite Team (Invite-only)</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css" />
+  <meta name="description" content="Kaizen — an invite-only high-performance team inside a major network company. Training, mentorship, leadership path, and predictable income systems.">
 </head>
 <body>
-    <header>
-        <h1>Kaizen Empire</h1>
-        <p class="tagline">Growing consistently with small steps together</p>
-    </header>
+  <!-- Top strip -->
+  <div class="top-strip">Invite-only onboarding — Next live orientation: July 26, 2025 • Request access</div>
 
-    <main id="mountain-container">
-        <section class="section">📈 <strong>Kaizen</strong>: Meaning consistent growth</section>
-        <section class="section">🧠 <strong>Vision</strong>: Help people unleash their potential and grow financially by improving habits</section>
-        <section class="section">👁️ <strong>Goal</strong>: Create 50 MLM Core Organizations by 2030</section>
-        <section class="section">🕰️ <strong>Founded</strong>: 2022 by Kirubel Tadesse</section>
-        <section class="section">
-            <h2>🚀 Offerings</h2>
-            <ul>
-                <li>Mentorship through business and personal development</li>
-                <li>Online income opportunities</li>
-                <li>Events for recruitment and knowledge</li>
-                <li>A high-skill, high-ambition community</li>
-            </ul>
-        </section>
-        <section class="section">
-            <h2>📋 Operations</h2>
-            <ul>
-                <li>Daily Telegram orientations</li>
-                <li>Weekly new business orientations</li>
-                <li>Weekly recognition and training sessions</li>
-            </ul>
-        </section>
-        <section class="section">
-            <h2>🎤 Testimonial</h2>
-            <p>"I was stuck in employee life... until Kaizen unlocked my true potential. I built a team, grew my income, and finally stepped into freedom."</p>
-            <iframe width="300" height="180" src="https://www.youtube.com/embed/sn67HhCmXHk?si=En_Ailrp3yYm6vHh" title="Kaizen Testimonial" allowfullscreen></iframe>
-        </section>
-        <section class="section">
-            <h2>📲 Join Us</h2>
-            <form>
-                <input type="text" placeholder="Full Name" required /><br />
-                <input type="text" placeholder="Phone" required /><br />
-                <input type="text" placeholder="Telegram Username" required /><br />
-                <button type="submit">Submit</button>
-            </form>
-            <a class="telegram-button" href="https://t.me/KaizenEmpireBot" target="_blank">Message us on Telegram</a>
-        </section>
-        <section class="section">
-            <h2>📍 Contact</h2>
-            <p>📞 Phone: 0980114265</p>
-            <p>📍 Megenagna, Lion International Building</p>
-        </section>
-    </main>
+  <!-- Header -->
+  <header class="site-header" id="site-header">
+    <div class="container header-inner">
+      <a class="logo" href="#">KAIZEN</a>
 
-    <footer>
-        <p>&copy; 2025 Kaizen Empire. All rights reserved.</p>
-        <button id="toggle-theme">🌓 Toggle Light/Dark</button>
-    </footer>
+      <nav class="nav" aria-label="Primary">
+        <a href="#opportunity">Opportunity</a>
+        <a href="#team">Team</a>
+        <a href="#events">Events</a>
+        <a href="#apply" class="cta">Apply</a>
+      </nav>
 
-    <script src="script.js"></script>
+      <button class="hamburger" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero" id="hero" aria-labelledby="hero-title">
+    <div class="container hero-inner">
+      <div class="hero-copy">
+        <h1 class="eyebrow">Kaizen Business Empire</h1>
+        <h2 id="hero-title" class="title">Where ambition meets discipline.<br/>Join an elite team inside a major network company.</h2>
+        <p class="lead">Kaizen trains, supports, and scales dedicated sellers and leaders. We combine daily systems, tested funnels, and ruthless consistency — for predictable results and real leadership growth.</p>
+
+        <div class="hero-ctas">
+          <a class="btn primary" href="#apply">Request Invitation</a>
+          <a class="btn ghost" href="#opportunity">See Opportunity</a>
+        </div>
+
+        <ul class="key-points" aria-hidden="false">
+          <li>Daily micro-actions — activity > motivation.</li>
+          <li>Weekly coaching + done-for-you funnels.</li>
+          <li>Recognition, fast-track leadership, residual income.</li>
+        </ul>
+      </div>
+
+      <div class="hero-media" aria-hidden="true">
+        <div class="media-card">
+          <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=1400&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="Kaizen team planning session">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Philosophy -->
+  <section class="features container" id="philosophy" aria-labelledby="philo-title">
+    <h3 id="philo-title" class="section-title centered">Our Philosophy</h3>
+    <div class="feature-grid">
+      <div class="feature-card">
+        <h4>Discipline</h4>
+        <p>Small, consistent actions compound. We systemize the daily work so results become inevitable.</p>
+      </div>
+      <div class="feature-card">
+        <h4>Mastery</h4>
+        <p>Focus on skill-first sales and leadership. We teach sellable skills, not hype or guesswork.</p>
+      </div>
+      <div class="feature-card">
+        <h4>Freedom</h4>
+        <p>We build repeatable income streams so members can scale time and lifestyle on their terms.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Opportunity / Programs -->
+  <section id="opportunity" class="collections container" aria-labelledby="opp-title">
+    <h4 id="opp-title" class="section-title">Opportunity Tracks</h4>
+    <div class="grid">
+      <a class="card" href="#" aria-label="Starter — Launch">
+        <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?q=80&w=1400&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="Starter track — close conversations">
+        <div class="card-info"><span>Starter — Launch (Sales + Skills)</span></div>
+      </a>
+      <a class="card" href="#" aria-label="Growth — Team Builder">
+        <img src="https://images.unsplash.com/photo-1542736667-069246bdbc6d?q=80&w=1400&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="Growth track — build a team">
+        <div class="card-info"><span>Growth — Team Builder</span></div>
+      </a>
+      <a class="card" href="#" aria-label="Leadership — Scale & Mentor">
+        <img src="https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?q=80&w=1400&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="Leadership track — mentor others">
+        <div class="card-info"><span>Leadership — Scale & Mentor</span></div>
+      </a>
+    </div>
+    <p class="subnote">Each track includes templates, recorded trainings, and live group coaching. We prioritize action takers — limited seats.</p>
+  </section>
+
+  <!-- Training & Mentorship -->
+  <section class="training container" aria-labelledby="train-title">
+    <h4 id="train-title" class="section-title">Training & Mentorship</h4>
+    <div class="training-grid">
+      <div class="training-item">
+        <h5>Weekly Elite Calls</h5>
+        <p>Live coaching with actionable scripts, role-play, and real-time feedback.</p>
+      </div>
+      <div class="training-item">
+        <h5>Done-for-you Funnels</h5>
+        <p>High-converting funnels, messages, and follow-up templates to speed results.</p>
+      </div>
+      <div class="training-item">
+        <h5>1:1 Mentoring</h5>
+        <p>Personalized growth plan and leadership acceleration for top performers.</p>
+      </div>
+      <div class="training-item">
+        <h5>Mindset & Peak Performance</h5>
+        <p>Daily routines, energy management, and accountability to sustain growth.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Recognition Wall -->
+  <section class="collections container" id="recognition" aria-labelledby="rec-title">
+    <h4 id="rec-title" class="section-title">Recognition Wall</h4>
+    <div class="grid">
+      <a class="card" href="#" aria-label="Top earner story">
+        <img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?q=80&w=1400&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="Top earner lifestyle">
+        <div class="card-info"><span>Top Earner • $5k/month+</span></div>
+      </a>
+      <a class="card" href="#" aria-label="Promoted leader">
+        <img src="https://images.unsplash.com/photo-1503341455253-b2e723bb3dbb?q=80&w=1400&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="Promoted leader">
+        <div class="card-info"><span>Fast-Track Leader • Promoted in 90 days</span></div>
+      </a>
+      <a class="card" href="#" aria-label="Recognition night highlight">
+        <img src="https://images.unsplash.com/photo-1520975912232-3b1f8b8f4d3c?q=80&w=1400&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="Recognition night">
+        <div class="card-info"><span>Recognition Nights • Spotlight</span></div>
+      </a>
+    </div>
+  </section>
+
+  <!-- Meet the Team -->
+  <section id="team" class="about container" aria-labelledby="team-title">
+    <h4 id="team-title" class="section-title">Meet the Team</h4>
+    <p class="about-text">Kaizen is a selective team inside a major network company. We hire for potential and train for performance — a small group of disciplined sellers who scale together, celebrate wins, and mentor the next wave.</p>
+
+    <div class="team-grid">
+      <div class="member">
+        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=900&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="King — Team Lead">
+        <h5>King — Team Lead</h5>
+        <p class="muted">Coach, recruiter, and strategist focused on building leaders.</p>
+      </div>
+      <div class="member">
+        <img src="https://images.unsplash.com/photo-1545996124-8b3b7b8b5f4b?q=80&w=900&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="Senior Mentor">
+        <h5>Senior Mentor</h5>
+        <p class="muted">Sales systems and closing techniques specialist.</p>
+      </div>
+      <div class="member">
+        <img src="https://images.unsplash.com/photo-1545998031-5bfbf5b4b9d8?q=80&w=900&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="Operations Coach">
+        <h5>Operations Coach</h5>
+        <p class="muted">Funnels, onboarding, and CRM setup — systems that scale.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Events -->
+  <section id="events" class="collections container" aria-labelledby="events-title">
+    <h4 id="events-title" class="section-title">Upcoming Events</h4>
+    <div class="grid">
+      <a class="card" href="#" aria-label="New Business Orientation">
+        <img src="https://images.unsplash.com/photo-1507678335847-4d5b0a9fdf2b?q=80&w=1400&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="Orientation">
+        <div class="card-info"><span>New Business Orientation</span></div>
+      </a>
+      <a class="card" href="#" aria-label="Weekly Coaching Call">
+        <img src="https://images.unsplash.com/photo-1520975923518-4b8f0f9c1b9a?q=80&w=1400&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="Coaching call">
+        <div class="card-info"><span>Weekly Coaching Call</span></div>
+      </a>
+      <a class="card" href="#" aria-label="Recognition Night">
+        <img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?q=80&w=1400&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="Recognition night">
+        <div class="card-info"><span>Recognition Night</span></div>
+      </a>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="features container" aria-labelledby="test-title">
+    <h4 id="test-title" class="section-title centered">Testimonials</h4>
+    <div class="feature-grid testimonials">
+      <div class="feature">
+        <h3>"I made my first recurring $1,000 within 45 days"</h3>
+        <p class="muted">— A starter member who followed the daily playbook and commitment track.</p>
+      </div>
+      <div class="feature">
+        <h3>"The mentorship and scripts changed my results"</h3>
+        <p class="muted">— Promoted to mentor level within 90 days after joining Kaizen.</p>
+      </div>
+      <div class="feature">
+        <h3>"Disciplined action > motivation"</h3>
+        <p class="muted">— Core Kaizen value: consistent small wins compound into freedom.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Apply / Contact -->
+  <section id="apply" class="about container" aria-labelledby="apply-title">
+    <h4 id="apply-title" class="section-title">Request Access</h4>
+    <p class="about-text">Kaizen accepts a small cohort each month. If you want mentorship, predictable income-building steps, and a fast-track to leadership — apply below. Access is selective: we value commitment and discipline.</p>
+
+    <form id="apply-form" class="apply-form" onsubmit="return submitInviteForm(event)" aria-label="Request Access Form">
+      <div class="form-row">
+        <label for="name">Full name</label>
+        <input id="name" name="name" type="text" required placeholder="Your full name">
+      </div>
+      <div class="form-row">
+        <label for="email">Email</label>
+        <input id="email" name="email" type="email" required placeholder="you@domain.com">
+      </div>
+      <div class="form-row">
+        <label for="motivation">Short motivation (1–2 lines)</label>
+        <textarea id="motivation" name="motivation" rows="3" required placeholder="Why do you want to join Kaizen?"></textarea>
+      </div>
+
+      <div class="form-actions">
+        <button class="btn primary" type="submit">Request Invitation</button>
+        <button class="btn ghost" type="button" onclick="bookCall()">Book Strategy Call</button>
+      </div>
+
+      <p class="form-note">We screen applicants. By applying you agree to be contacted via email/WhatsApp. Replace this client-side action with a server endpoint or Netlify/Forms later.</p>
+    </form>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container footer-inner">
+      <div class="footer-left">
+        <a class="logo small" href="#">KAIZEN</a>
+        <p class="muted">Kaizen Business Empire • High-performance team</p>
+      </div>
+      <div class="footer-right">
+        <nav aria-label="Footer">
+          <a href="#opportunity">Opportunity</a>
+          <a href="#team">Team</a>
+          <a href="#events">Events</a>
+          <a href="#apply">Apply</a>
+        </nav>
+        <p class="muted">© <span id="year"></span> Kaizen Business Empire</p>
+        <p class="muted small-disclaimer">Kaizen operates within the parent network company. This site is informational and for recruitment/education of prospective members.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
