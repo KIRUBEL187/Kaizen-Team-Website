@@ -3,92 +3,133 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Montfort — Replica (Horizontal / Cinematic)</title>
-  <meta name="description" content="Replica of Montfort Maritime style site — horizontal, cinematic, 3D transitions. Replace images / colors / content."/>
+  <title>Montfort — Replica (Horizontal • Cinematic)</title>
+  <meta name="description" content="Cinematic horizontal replica of the Montfort Maritime site — Three.js hero, GSAP transitions, responsive and accessible." />
+
+  <!-- Fonts: change or add your own -->
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="styles.css">
-  <!-- GSAP -->
+
+  <!-- Libraries (CDN) -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js" defer></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r152/three.min.js" defer></script>
+
+  <!-- Helpful meta for mobile web -->
+  <meta name="theme-color" content="#0f1720" />
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
 
-  <header class="site-header" aria-label="Primary">
-    <div class="brand">
-      <strong>Montfort</strong>
-      <small>Maritime (Replica)</small>
+  <header class="site-header" role="banner">
+    <div class="brand" aria-hidden="false">
+      <!-- Replace with your SVG logo -->
+      <div class="logo">
+        <svg width="36" height="36" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <rect width="24" height="24" rx="4" fill="white" opacity="0.08"></rect>
+          <path d="M3 12h18" stroke="#fff" stroke-width="1.2" stroke-linecap="round"></path>
+        </svg>
+      </div>
+      <div class="brand-text">
+        <strong>Montfort</strong>
+        <small>Maritime</small>
+      </div>
     </div>
-    <nav class="top-nav" aria-label="Primary navigation">
+
+    <nav class="top-nav" role="navigation" aria-label="Primary">
       <button id="prevBtn" class="nav-btn" aria-label="Previous section">◀</button>
       <button id="nextBtn" class="nav-btn" aria-label="Next section">▶</button>
     </nav>
   </header>
 
-  <main id="main" class="main">
-    <div class="scroller" id="scroller" role="region" aria-label="Horizontal sections">
-      <!-- Panel 1: Hero -->
+  <main id="main" class="main" role="main">
+    <!-- scroller holds panels horizontally -->
+    <div class="scroller" id="scroller" role="region" aria-label="Site sections">
+      <!-- HERO: includes WebGL canvas container -->
       <section class="panel panel--hero" data-panel="0" aria-label="Hero">
         <div class="panel-inner">
-          <div class="hero-left">
+          <div class="hero-content">
             <h1 class="hero-title">Montfort Maritime</h1>
-            <p class="hero-sub">Investments • Freight Trading • Shipping Services</p>
-            <a class="cta" href="#contact">Learn more</a>
+            <p class="hero-sub">Trading-led maritime investments and commercial management</p>
+            <div class="hero-actions">
+              <a class="cta" href="#contact">Contact us</a>
+              <button id="playTone" class="ghost">Explore →</button>
+            </div>
+            <div class="trust">
+              <span>Geneva • Dubai • Singapore</span>
+            </div>
           </div>
-          <div class="hero-media" aria-hidden="true" style="background-image: url('https://images.unsplash.com/photo-1508873535684-277a3cbcc8ca?q=80&w=1600&auto=format&fit=crop&ixlib=rb-4.0.3&s=3f2f7b96c3b8a8d6ff8b3b6c29a84b33');"></div>
+
+          <!-- WebGL container sits to the right visually but fills hero media area -->
+          <div class="hero-media">
+            <div id="webgl-hero" aria-hidden="true"></div>
+          </div>
         </div>
       </section>
 
-      <!-- Panel 2: About -->
-      <section class="panel panel--about" data-panel="1" aria-label="About Montfort">
+      <!-- ABOUT -->
+      <section class="panel panel--about" data-panel="1" aria-label="About">
         <div class="panel-inner">
           <div class="text-block">
             <h2>Who we are</h2>
-            <p>Montfort Maritime is a trading-led maritime investor focusing on optimized vessel deployment and freight-based yield strategies.</p>
+            <p>Montfort Maritime is a trading-first maritime investor focusing on freight-driven yield strategies, rigorous vetting and operational excellence.</p>
+            <p class="muted">This replica demonstrates the look & feel. Replace copy and images with your assets for production.</p>
           </div>
-          <div class="image-block" style="background-image: url('https://images.unsplash.com/photo-1507120410856-1f35574c3b45?q=80&w=1600&auto=format&fit=crop&ixlib=rb-4.0.3&s=1b9d3d8b5723b9d9c86639f4a0d5f22d');"></div>
+          <div class="image-block" style="background-image: url('https://images.unsplash.com/photo-1507120410856-1f35574c3b45?q=80&w=1600&auto=format&fit=crop');" aria-hidden="true"></div>
         </div>
       </section>
 
-      <!-- Panel 3: Services -->
+      <!-- SERVICES -->
       <section class="panel panel--services" data-panel="2" aria-label="Services">
         <div class="panel-inner">
-          <h2>Our Services</h2>
-          <ul class="services-grid">
-            <li class="service">
+          <h2>Services</h2>
+          <ul class="services-grid" role="list">
+            <li class="service" role="listitem">
               <h3>Freight Trading</h3>
-              <p>Active risk-managed FFA portfolios</p>
+              <p>Forward Freight Agreements (FFAs) and active trading strategies.</p>
             </li>
-            <li class="service">
+            <li class="service" role="listitem">
               <h3>Commercial Management</h3>
-              <p>Vessel deployment & charter optimization</p>
+              <p>Optimised chartering & vessel deployment using market analytics.</p>
             </li>
-            <li class="service">
-              <h3>Investment Fund</h3>
-              <p>Managed maritime exposure for investors</p>
+            <li class="service" role="listitem">
+              <h3>Investment Funds</h3>
+              <p>Managed maritime exposure for institutional and private investors.</p>
             </li>
           </ul>
         </div>
       </section>
 
-      <!-- Panel 4: Fleet / Visual -->
+      <!-- FLEET -->
       <section class="panel panel--fleet" data-panel="3" aria-label="Fleet">
         <div class="panel-inner">
           <h2>Fleet & Operations</h2>
           <div class="fleet-images">
-            <div class="fleet-image" style="background-image:url('https://images.unsplash.com/photo-1508610048659-a06e2d4cf3d9?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=a1d6b2ad9c1b4b3d6d6ff8cc5f8a9b53');"></div>
-            <div class="fleet-image" style="background-image:url('https://images.unsplash.com/photo-1469474968028-56623f02e42e?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=e2c1e8a9a0d9c6b5b3c4f9a1a2c3d4e5');"></div>
+            <div class="fleet-image" style="background-image:url('https://images.unsplash.com/photo-1508610048659-a06e2d4cf3d9?q=80&w=1200&auto=format&fit=crop');" aria-hidden="true"></div>
+            <div class="fleet-image" style="background-image:url('https://images.unsplash.com/photo-1469474968028-56623f02e42e?q=80&w=1200&auto=format&fit=crop');" aria-hidden="true"></div>
           </div>
         </div>
       </section>
 
-      <!-- Panel 5: Contact / Footer -->
-      <section class="panel panel--contact" data-panel="4" aria-label="Contact">
+      <!-- ESG / SUSTAINABILITY -->
+      <section class="panel panel--esg" data-panel="4" aria-label="Sustainability">
+        <div class="panel-inner">
+          <div class="text-block">
+            <h2>ESG & Decarbonisation</h2>
+            <p>We prioritise emissions reduction, vessel efficiency upgrades and supply chain decarbonisation through data-driven initiatives.</p>
+          </div>
+          <div class="image-block" style="background-image: url('https://images.unsplash.com/photo-1503602642458-232111445657?q=80&w=1600&auto=format&fit=crop');" aria-hidden="true"></div>
+        </div>
+      </section>
+
+      <!-- CONTACT -->
+      <section class="panel panel--contact" data-panel="5" aria-label="Contact">
         <div class="panel-inner">
           <h2>Contact</h2>
-          <p>Geneva • Dubai • Singapore</p>
+          <p>Head offices: Geneva • Dubai • Singapore</p>
           <form id="contact" class="contact-form" aria-label="Contact form">
             <label>
               <span class="visually-hidden">Name</span>
@@ -108,12 +149,12 @@
       </section>
     </div>
 
-    <!-- Page nav dots -->
+    <!-- nav dots -->
     <nav class="dots" aria-label="Section navigation" id="dotsNav" role="navigation"></nav>
   </main>
 
-  <footer class="site-footer">
-    <small>Replica — replace content and assets. © <span id="year"></span></small>
+  <footer class="site-footer" role="contentinfo">
+    <small>Replica — replace content & assets. © <span id="year"></span></small>
   </footer>
 
   <script src="script.js" defer></script>
